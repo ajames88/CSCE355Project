@@ -1,18 +1,28 @@
 import sys
 fileName = sys.argv[1]
 
-f = open(fileName, "r")
-print("Input is printed below:")
-print(f.read())
+log = open("logfile.txt", "w")
+output = open("output.txt", "w")
 
-print("Output is printed below:")
+f = open(fileName, "r")
+
+log.write("Input is printed below:")
+log.write(f.read())
+log.write("\n")
+
+log.write("Output is printed below:")
+log.write("\n")
+
 f = open(fileName, "r")
 
 numOfStatesString = f.readline()
 numOfStatesString = numOfStatesString.strip()
 numOfStatesTrim = numOfStatesString[18:(len(numOfStatesString))]
 numOfStates = int(numOfStatesTrim)
-print("Number of States: ", numOfStates)
+
+log.write("Number of States: ")
+log.write(str(numOfStates))
+log.write("\n")
 
 acceptingStatesString = f.readline()
 acceptingStatesString = acceptingStatesString.strip()
@@ -21,7 +31,9 @@ acceptingStatesTrim = acceptingStatesString[18:(len(acceptingStatesString))]
 accepting = acceptingStatesTrim.split(" ")
 
 
-print("Accepting States: ", accepting)
+log.write("Accepting States: ")
+log.write(str(accepting))
+log.write("\n")
 
 alphabetString = f.readline()
 alphabetString = alphabetString.strip()
@@ -33,7 +45,9 @@ alphabet = []
 for x in alphabetStringTrim:
 	alphabet.append(x)
 
-print("Alphabet: ", alphabet)
+log.write("Alphabet: ")
+log.write(str(alphabet))
+log.write("\n")
 
 adjMatrix = []
 for x in range(numOfStates):
@@ -45,7 +59,9 @@ for x in range(numOfStates):
 	matrix = paths.split(" ")
 	adjMatrix[x] = matrix
 
-print("Adjacency Matrix:: ", adjMatrix)
+log.write("Adjacency Matrix:: ")
+log.write(str(adjMatrix))
+log.write("\n")
 
 inputFile = sys.argv[2]
 inReader = open(inputFile, "r")
@@ -55,9 +71,9 @@ for x in inReader:
 	x = x.strip()
 	input.append(x)
 
-print(numOfStates, len(adjMatrix))
-
-print("Input: ", input)
+log.write("Input: ")
+log.write(str(input))
+log.write("\n")
 
 for x in input:
 	current = 0
@@ -69,6 +85,10 @@ for x in input:
 		current = currentAdj[alphaInd]
 		#print(current)
 	if str(current) in accepting:
-		print(current, "accept")
+		log.write("Ending State: "+str(current)+" -> ")
+		log.write("accept\n")
+		output.write("accept\n")
 	else:
-		print(current, "reject")
+		log.write("Ending State: "+str(current)+" -> ")
+		log.write("reject\n")
+		output.write("reject\n")
