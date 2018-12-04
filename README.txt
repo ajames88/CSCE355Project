@@ -1,6 +1,6 @@
 This project is authored by Austin James and it is the sole property of Austin James for use in CSCE 355 by instructor Duncan Buell. All Rights Reserved.
 
-In order to run the simulator from to command line type 'python simulator.py' followed by the name of an input file containing the description of the DFA and another input file containing the strings to simulate.
+In order to run the simulator from to command line type 'python3.7 simulator.py' followed by the name of an input file containing the description of the DFA and another input file containing the strings to simulate.
 
 The DFA input file should be in the following format:
 
@@ -21,10 +21,10 @@ The string input file should be in the following format:
 010001
 1001111
 
-An example of this command line call using the provided demo file is 'python simulator.py demofile.txt'.
+An example of this command line call using the provided demo file is 'python3.7 simulator.py demofile.txt'.
 The simulator should run completely and correctly.
 
-In order to run the properties program from to command line type 'python properties.py' followed by the name of an input file containing the description of the DFA.
+In order to run the properties program from to command line type 'python3.7 properties.py' followed by the name of an input file containing the description of the DFA.
 
 The DFA input file should be in the following format:
 
@@ -37,4 +37,5 @@ Alphabet: 01
 1 2
 3 4
 
+An example of this command line call using the provided demo file is 'python3.7 properties.py demofile.txt'.
 The properties program should run completely and correctly.
