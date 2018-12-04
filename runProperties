@@ -1,0 +1,8 @@
+#!/bin/bash
+  
+echo ""
+python3.7 properties.py demofile.txt
+cat propertiesLogFile.txt
+echo ""
+cat propertiesOutput.txt
+echo "" 

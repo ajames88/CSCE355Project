@@ -1,8 +1,8 @@
 import sys
 fileName = sys.argv[1]
 
-log = open("simulatorLogFile.txt", "w")
-output = open("simulatorOutput.txt", "w")
+log = open("propertiesLogFile.txt", "w")
+output = open("propertiesOutput.txt", "w")
 
 f = open(fileName, "r")
 
@@ -62,33 +62,3 @@ for x in range(numOfStates):
 log.write("Adjacency Matrix:: ")
 log.write(str(adjMatrix))
 log.write("\n")
-
-inputFile = sys.argv[2]
-inReader = open(inputFile, "r")
-
-input = []
-for x in inReader:
-	x = x.strip()
-	input.append(x)
-
-log.write("Input: ")
-log.write(str(input))
-log.write("\n")
-
-for x in input:
-	current = 0
-	for y in range(len(x)):
-		nextIn = x[y]
-		currentAdj = adjMatrix[int(current)]
-		#print(currentAdj)
-		alphaInd = alphabet.index(nextIn)
-		current = currentAdj[alphaInd]
-		#print(current)
-	if str(current) in accepting:
-		log.write("Ending State: "+str(current)+" -> ")
-		log.write("accept\n")
-		output.write("accept\n")
-	else:
-		log.write("Ending State: "+str(current)+" -> ")
-		log.write("reject\n")
-		output.write("reject\n")

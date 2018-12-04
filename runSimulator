@@ -2,7 +2,7 @@
 
 echo ""
 python3.7 simulator.py demofile.txt inputFile.txt
-cat logFile.txt
+cat simulatorLogFile.txt
 echo ""
-cat output.txt
+cat simulatorOutput.txt
 echo "" 
