@@ -62,3 +62,8 @@ for x in range(numOfStates):
 log.write("Adjacency Matrix:: ")
 log.write(str(adjMatrix))
 log.write("\n")
+
+
+
+log.close()
+output.close()

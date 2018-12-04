@@ -92,3 +92,6 @@ for x in input:
 		log.write("Ending State: "+str(current)+" -> ")
 		log.write("reject\n")
 		output.write("reject\n")
+
+log.close()
+output.close()
