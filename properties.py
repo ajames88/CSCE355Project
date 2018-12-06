@@ -2,17 +2,19 @@ import sys
 import queue
 fileName = sys.argv[1]
 
-log = open("propertiesLogFile.txt", "w")
-output = open("propertiesOutput.txt", "w")
+#log = open("propertiesLogFile.txt", "w")
+#output = open("propertiesOutput.txt", "w")
 
-f = open(fileName, "r")
+#f = open(fileName, "r")
 
-log.write("Input is printed below:\n")
-log.write(f.read())
-log.write("\n")
+#log.write("Input is printed below:\n")
+#log.write(f.read())
+#log.write("\n")
 
-log.write("Output is printed below:")
-log.write("\n")
+#f.close()
+
+#log.write("Output is printed below:")
+#log.write("\n")
 
 f = open(fileName, "r")
 
@@ -21,9 +23,9 @@ numOfStatesString = numOfStatesString.strip()
 numOfStatesTrim = numOfStatesString[18:(len(numOfStatesString))]
 numOfStates = int(numOfStatesTrim)
 
-log.write("Number of States: ")
-log.write(str(numOfStates))
-log.write("\n")
+#log.write("Number of States: ")
+#log.write(str(numOfStates))
+#log.write("\n")
 
 acceptingStatesString = f.readline()
 acceptingStatesString = acceptingStatesString.strip()
@@ -32,9 +34,9 @@ acceptingStatesTrim = acceptingStatesString[18:(len(acceptingStatesString))]
 accepting = acceptingStatesTrim.split(" ")
 
 
-log.write("Accepting States: ")
-log.write(str(accepting))
-log.write("\n")
+#log.write("Accepting States: ")
+#log.write(str(accepting))
+#log.write("\n")
 
 alphabetString = f.readline()
 alphabetString = alphabetString.strip()
@@ -46,9 +48,9 @@ alphabet = []
 for x in alphabetStringTrim:
 	alphabet.append(x)
 
-log.write("Alphabet: ")
-log.write(str(alphabet))
-log.write("\n")
+#log.write("Alphabet: ")
+#log.write(str(alphabet))
+#log.write("\n")
 
 adjMatrix = []
 for x in range(numOfStates):
@@ -60,9 +62,9 @@ for x in range(numOfStates):
 	matrix = paths.split(" ")
 	adjMatrix[x] = matrix
 
-log.write("Adjacency Matrix:: ")
-log.write(str(adjMatrix))
-log.write("\n")
+#log.write("Adjacency Matrix:: ")
+#log.write(str(adjMatrix))
+#log.write("\n")
 
 reachableFromStart = []
 
@@ -70,7 +72,7 @@ needToCheck = []
 for x in range(numOfStates):
 	needToCheck.append(x)
 
-log.write("\nNeed to Check: "+str(needToCheck)+"\n\n")
+#log.write("\nNeed to Check: "+str(needToCheck)+"\n\n")
 
 def reachAll(state, reachable):
         needToCheck.remove(int(state))
@@ -82,7 +84,7 @@ def reachAll(state, reachable):
 
 reachAll(0, reachableFromStart)
 
-log.write("\nReachable States: "+str(reachableFromStart)+"\n")
+#log.write("\nReachable States: "+str(reachableFromStart)+"\n")
 
 empty = True
 
@@ -118,15 +120,15 @@ for x in range(numOfStates):
 		finite = False
 
 if empty == True:
-	output.write("empty finite\n")
+	#output.write("empty finite\n")
 	print("empty finite")
 if empty == False and finite == False:
-	output.write("nonempty infinite\n")
+	#output.write("nonempty infinite\n")
 	print("nonempty infinite")
 if empty == False and finite == True:
-	output.write("nonempty finite\n")
+	#output.write("nonempty finite\n")
 	print("nonempty finite")
 
 f.close()
-log.close()
-output.close()
+#log.close()
+#output.close()
