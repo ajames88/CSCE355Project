@@ -1,5 +1,0 @@
-Input alphabet: 012
-Output alphabet: abcd
-abd
-
-acda

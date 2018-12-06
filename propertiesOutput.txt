@@ -1,1 +1,2 @@
-nonempty
+empty infinite
+nonempty finite

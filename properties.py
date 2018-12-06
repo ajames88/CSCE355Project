@@ -6,7 +6,7 @@ output = open("propertiesOutput.txt", "w")
 
 f = open(fileName, "r")
 
-log.write("Input is printed below:")
+log.write("Input is printed below:\n")
 log.write(f.read())
 log.write("\n")
 
@@ -67,33 +67,46 @@ reachable = []
 
 needToCheck = []
 for x in range(numOfStates):
-    needToCheck.append(x)
+	needToCheck.append(x)
 
 log.write("\nNeed to Check: "+str(needToCheck)+"\n\n")
 
 def reachAll(state):
-    log.write("The following states are reachable directly from state "+str(state)+": ")
-    for x in adjMatrix[state]:
-        if x not in reachable:
-            reachable.append(x)
-        log.write(x+" ")
-    log.write("\n")
+        needToCheck.remove(int(state))
+        for x in adjMatrix[state]:
+                if x not in reachable:
+                        reachable.append(x)
+                if int(x) in needToCheck:
+                        reachAll(int(x))
 
-for x in range(numOfStates):
-    reachAll(x)
+reachAll(0)
+
+print("\n")
 
 log.write("\nReachable States: "+str(reachable)+"\n")
 
 empty = True
 
 for x in accepting:
-    if x in reachable:
-        output.write("nonempty\n")
-        empty = False
-    break
+	if x in reachable:
+		empty = False
 
-if empty == True:
-    output.write("empty\n")
+infinite = True
+
+
+
+if empty == True and infinite == True:
+	output.write("empty infinite\n")
+	print("empty infinite")
+if empty == False and infinite == True:
+	output.write("nonempty infinite\n")
+	print("nonempty infinite")
+if empty == True and infinite == False:
+	output.write("empty finite\n")
+	print("empty finite")
+else:
+	output.write("nonempty finite\n")
+	print("nonempty finite")
 
 f.close()
 log.close()
