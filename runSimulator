@@ -1,8 +1,0 @@
-#!/bin/bash
-
-echo ""
-python3.7 simulator.py demofile.txt inputFile.txt
-cat simulatorLogFile.txt
-echo ""
-cat simulatorOutput.txt
-echo "" 
