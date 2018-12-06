@@ -1,7 +1,7 @@
 # Below are the commands necessary to build and run my properties submission.
-# This portion of the project was completed in python v 3.7, so there are no build commands.
+# This portion of the project was completed in python v 3.5, so there are no build commands.
 # The run command contains only the program file, an additional input file must be added to the command in order to execute the program.
 
 Build:
 Run:
-  python3.7 properties.py
+  python3.5 properties.py
