@@ -1,4 +1,5 @@
 import sys
+import queue
 fileName = sys.argv[1]
 
 log = open("propertiesLogFile.txt", "w")
@@ -63,7 +64,7 @@ log.write("Adjacency Matrix:: ")
 log.write(str(adjMatrix))
 log.write("\n")
 
-reachable = []
+reachableFromStart = []
 
 needToCheck = []
 for x in range(numOfStates):
@@ -71,40 +72,58 @@ for x in range(numOfStates):
 
 log.write("\nNeed to Check: "+str(needToCheck)+"\n\n")
 
-def reachAll(state):
+def reachAll(state, reachable):
         needToCheck.remove(int(state))
         for x in adjMatrix[state]:
                 if x not in reachable:
                         reachable.append(x)
                 if int(x) in needToCheck:
-                        reachAll(int(x))
+                        reachAll(int(x), reachable)
 
-reachAll(0)
+reachAll(0, reachableFromStart)
 
-print("\n")
-
-log.write("\nReachable States: "+str(reachable)+"\n")
+log.write("\nReachable States: "+str(reachableFromStart)+"\n")
 
 empty = True
 
 for x in accepting:
-	if x in reachable:
+	if x in reachableFromStart:
 		empty = False
 
-infinite = True
+finite = True
 
+reachables = []
 
+def intersect(lista, listb):
+	for x in lista:
+		if x in listb:
+			return True
+	return False
 
-if empty == True and infinite == True:
-	output.write("empty infinite\n")
-	print("empty infinite")
-if empty == False and infinite == True:
-	output.write("nonempty infinite\n")
-	print("nonempty infinite")
-if empty == True and infinite == False:
+def findReachable(x):
+	reachableFromX = []
+	toCheck = [x]
+	while len(toCheck) > 0:
+		state = toCheck[0]
+		for y in adjMatrix[int(state)]:
+			if y not in reachableFromX:
+				reachableFromX.append(y)
+				toCheck.append(y)
+		toCheck.pop(0)
+	return reachableFromX
+
+for x in range(numOfStates):
+	reachables.append(findReachable(x))
+	if str(x) in reachables[x] and intersect(reachables[x], accepting) and str(x) in reachableFromStart:
+		finite = False
+
+if empty == True:
 	output.write("empty finite\n")
 	print("empty finite")
-else:
+if empty == False and finite == False:
+	output.write("nonempty infinite\n")
+	print("nonempty infinite")
+if empty == False and finite == True:
 	output.write("nonempty finite\n")
 	print("nonempty finite")
 
