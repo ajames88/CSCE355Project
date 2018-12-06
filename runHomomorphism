@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo ""
+python3.7 homomorphism.py demofile.txt
+cat homomorphismLogFile.txt
+echo ""
+cat homomorphismOutput.txt
+echo ""

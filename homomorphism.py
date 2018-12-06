@@ -1,8 +1,8 @@
 import sys
 fileName = sys.argv[1]
 
-log = open("propertiesLogFile.txt", "w")
-output = open("propertiesOutput.txt", "w")
+log = open("homomorphismLogFile.txt", "w")
+output = open("homomorphismOutput.txt", "w")
 
 f = open(fileName, "r")
 
@@ -62,38 +62,3 @@ for x in range(numOfStates):
 log.write("Adjacency Matrix:: ")
 log.write(str(adjMatrix))
 log.write("\n")
-
-reachable = []
-
-needToCheck = []
-for x in range(numOfStates):
-    needToCheck.append(x)
-
-log.write("\nNeed to Check: "+str(needToCheck)+"\n\n")
-
-def reachAll(state):
-    log.write("The following states are reachable directly from state "+str(state)+": ")
-    for x in adjMatrix[state]:
-        if x not in reachable:
-            reachable.append(x)
-        log.write(x+" ")
-    log.write("\n")
-
-for x in range(numOfStates):
-    reachAll(x)
-
-log.write("\nReachable States: "+str(reachable)+"\n")
-
-empty = True
-
-for x in accepting:
-    if x in reachable:
-        output.write("nonempty\n")
-        empty = False
-    break
-
-if empty == True:
-    output.write("empty\n")
-
-log.close()
-output.close()
