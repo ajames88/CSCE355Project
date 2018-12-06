@@ -1,0 +1,8 @@
+#!/bin/bash
+  
+echo ""
+python3.7 textsearch.py demofile.txt
+cat textsearchLogFile.txt
+echo ""
+cat textsearchOutput.txt
+echo ""

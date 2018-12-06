@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ""
-python3.7 homomorphism.py demofile.txt
+python3.7 invhom.py randomDFA1.txt randomDFA1-hom.txt
 cat homomorphismLogFile.txt
 echo ""
 cat homomorphismOutput.txt

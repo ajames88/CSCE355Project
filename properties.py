@@ -95,5 +95,6 @@ for x in accepting:
 if empty == True:
     output.write("empty\n")
 
+f.close()
 log.close()
 output.close()

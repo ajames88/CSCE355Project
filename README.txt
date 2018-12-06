@@ -39,3 +39,35 @@ Alphabet: 01
 
 An example of this command line call using the provided demo file is 'python3.7 properties.py demofile.txt'.
 The properties program should run completely and correctly.
+
+In order to run the homomorphism program from to command line type 'python3.7 homomorphism.py' followed by the name of an input file containing the description of the DFA.
+
+The DFA input file should be in the following format:
+
+Number of states: 5
+Accepting states: 1 4
+Alphabet: 01
+0 1
+2 3
+4 0
+1 2
+3 4
+
+An example of this command line call using the provided demo file is 'python3.7 homomorphism.py demofile.txt'.
+The homomorphism program should run completely and correctly.
+
+In order to run the text search program from to command line type 'python3.7 textsearch.py' followed by the name of an input file containing the description of the DFA.
+
+The DFA input file should be in the following format:
+
+Number of states: 5
+Accepting states: 1 4
+Alphabet: 01
+0 1
+2 3
+4 0
+1 2
+3 4
+
+An example of this command line call using the provided demo file is 'python3.7 textsearch.py demofile.txt'.
+The text search program should run completely and correctly.

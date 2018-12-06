@@ -1,17 +1,17 @@
 import sys
 fileName = sys.argv[1]
 
-log = open("simulatorLogFile.txt", "w")
-output = open("simulatorOutput.txt", "w")
+#log = open("simulatorLogFile.txt", "w")
+#output = open("simulatorOutput.txt", "w")
 
 f = open(fileName, "r")
 
-log.write("Input is printed below:")
-log.write(f.read())
-log.write("\n")
+#log.write("Input is printed below:")
+#log.write(f.read())
+#log.write("\n")
 
-log.write("Output is printed below:")
-log.write("\n")
+#log.write("Output is printed below:")
+#log.write("\n")
 
 f = open(fileName, "r")
 
@@ -20,9 +20,9 @@ numOfStatesString = numOfStatesString.strip()
 numOfStatesTrim = numOfStatesString[18:(len(numOfStatesString))]
 numOfStates = int(numOfStatesTrim)
 
-log.write("Number of States: ")
-log.write(str(numOfStates))
-log.write("\n")
+#log.write("Number of States: ")
+#log.write(str(numOfStates))
+#log.write("\n")
 
 acceptingStatesString = f.readline()
 acceptingStatesString = acceptingStatesString.strip()
@@ -31,9 +31,9 @@ acceptingStatesTrim = acceptingStatesString[18:(len(acceptingStatesString))]
 accepting = acceptingStatesTrim.split(" ")
 
 
-log.write("Accepting States: ")
-log.write(str(accepting))
-log.write("\n")
+#log.write("Accepting States: ")
+#log.write(str(accepting))
+#log.write("\n")
 
 alphabetString = f.readline()
 alphabetString = alphabetString.strip()
@@ -45,9 +45,9 @@ alphabet = []
 for x in alphabetStringTrim:
 	alphabet.append(x)
 
-log.write("Alphabet: ")
-log.write(str(alphabet))
-log.write("\n")
+#log.write("Alphabet: ")
+#log.write(str(alphabet))
+#log.write("\n")
 
 adjMatrix = []
 for x in range(numOfStates):
@@ -59,9 +59,9 @@ for x in range(numOfStates):
 	matrix = paths.split(" ")
 	adjMatrix[x] = matrix
 
-log.write("Adjacency Matrix:: ")
-log.write(str(adjMatrix))
-log.write("\n")
+#log.write("Adjacency Matrix:: ")
+#log.write(str(adjMatrix))
+#log.write("\n")
 
 inputFile = sys.argv[2]
 inReader = open(inputFile, "r")
@@ -71,9 +71,9 @@ for x in inReader:
 	x = x.strip()
 	input.append(x)
 
-log.write("Input: ")
-log.write(str(input))
-log.write("\n")
+#log.write("Input: ")
+#log.write(str(input))
+#log.write("\n")
 
 for x in input:
 	current = 0
@@ -85,13 +85,14 @@ for x in input:
 		current = currentAdj[alphaInd]
 		#print(current)
 	if str(current) in accepting:
-		log.write("Ending State: "+str(current)+" -> ")
-		log.write("accept\n")
-		output.write("accept\n")
+		#log.write("Ending State: "+str(current)+" -> ")
+		#log.write("accept\n")
+		print("accept")
 	else:
-		log.write("Ending State: "+str(current)+" -> ")
-		log.write("reject\n")
-		output.write("reject\n")
+		#log.write("Ending State: "+str(current)+" -> ")
+		#log.write("reject\n")
+		print("reject")
 
-log.close()
-output.close()
+f.close()
+#log.close()
+#output.close()
